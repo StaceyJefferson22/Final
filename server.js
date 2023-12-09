@@ -3,13 +3,24 @@ const app = express();
 const Joi = require("joi");
 const multer = require("multer");
 app.use(express.static("public"));
+app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 const mongoose = require("mongoose");
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./uploads/");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
 
-const upload = multer({ dest: __dirname + "/public/images" });
+const upload = multer({ storage: storage});
+
+//const upload = multer({ dest: __dirname + "/public/images" });
 
 mongoose
     .connect(
