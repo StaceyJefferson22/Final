@@ -30,7 +30,7 @@ mongoose
     .catch((error) => console.log("Couldn't connect to mongodb", error));
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/team.html");
+    res.sendFile(__dirname + "/uploads/team.html");
 });
 
 const memberSchema = new mongoose.Schema({
