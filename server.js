@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage});
 
-//const upload = multer({ dest: __dirname + "/public/images" });
+//const blah = multer({ dest: __dirname + "/public/images" });
 
 mongoose
     .connect(
